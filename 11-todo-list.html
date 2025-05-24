@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+<body>
+  <p>Todo List Practice 1</p>
+
+  <input type="text" placeholder="Todo name" class="js-input-1" onkeydown="enterList1()"/>
+  <button onclick="addList1()" style="margin-bottom: 30px;">Add</button>
+
+  <p>Todo List Practice 2</p>
+
+  <input type="text" placeholder="Todo name" class="js-input-2" onkeydown="enterList2()"/>
+
+  <button onclick="addList2()">Add</button>
+
+  <p class="js-result-list-2"></p>
+  
+
+  <script>
+    const list1 = [];
+
+    function addList1() {
+      const input1Element = document.querySelector('.js-input-1');
+      
+      let input1 = input1Element.value;
+      
+      if (input1) {
+      list1.push(input1);
+      console.log(list1);
+      }
+
+      input1Element.value = '';
+    }
+
+    function enterList1() {
+      if (event.key === 'Enter') {
+        addList1();
+      }
+    }
+
+    const list2 = [];
+
+    function addList2() {
+      const input2Element = document.querySelector('.js-input-2');
+      
+      const input2 = input2Element.value;
+      //console.log(input2);
+
+      if (input2) {
+        list2.push(input2);
+        console.log(list2);
+      }
+      input2Element.value = '';
+
+      //document.querySelector('.js-result-list-2').innerHTML = `${list2}`;
+
+      for (let i = 0; i < list2.length; i++) {
+        document.querySelector('.js-result-list-2').innerHTML = `${list2[i]}`;
+      }
+
+    }
+
+    function enterList2() {
+      if (event.key === 'Enter') {
+        addList2();
+      }
+    }
+  </script>
+</body>
+</html>
