@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <p>Todo List Practice 1</p>
+
+    <input type="text" placeholder="Todo name" class="js-input-1" onkeydown="enterInput1()" />
+
+    <button onclick="addList1()">Add</button>
+
+    <hr />
+
+    <p>Todo List Practice 2</p>
+
+    <input type="text" placeholder="Todo name" class="js-input-2" onkeydown="enterInput2()" />
+
+    <button onclick="addTodoList2()">Add</button>
+
+    <div class="js-div-todo-list-2"></div>
+
+    <script>
+      let list1 = [];
+      function addList1() {
+        console.log("add list 1");
+        const input1Element = document.querySelector(".js-input-1");
+
+        const valueInput1 = input1Element.value;
+
+        if (valueInput1) {
+          list1.push(valueInput1);
+        }
+        console.log(list1);
+        input1Element.value = "";
+      }
+
+      function enterInput1() {
+        if (event.key === "Enter") {
+          addList1();
+        }
+      }
+
+      let todoList2 = [];
+
+      function addTodoList2() {
+        console.log("add todo list 2");
+        const input2Element = document.querySelector(".js-input-2");
+        const valueInput2 = input2Element.value;
+
+        if (valueInput2) {
+          todoList2.push(valueInput2);
+        }
+
+        console.log(todoList2);
+        input2Element.value = "";
+
+        renderTodoList2();
+      }
+
+      function enterInput2() {
+        if (event.key === "Enter") {
+          addTodoList2();
+        }
+      }
+
+      function renderTodoList2() {
+        let todoList2Html = "";
+
+        for (let i = 0; i < todoList2.length; i++) {
+          const todo = todoList2[i];
+          const html = `<p>${todo}</p>`;
+          todoList2Html += html;
+        }
+        console.log(todoList2Html);
+
+        document.querySelector(".js-div-todo-list-2").innerHTML = todoList2Html;
+      }
+    </script>
+  </body>
+</html>
